@@ -1,4 +1,5 @@
 (ns factoids-web.handler
+  (:gen-class)
   (:use compojure.core)
   (:require [org.httpkit.server   :refer  [run-server]]
             [compojure.handler    :as     handler]
