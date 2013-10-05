@@ -6,6 +6,7 @@
                  [com.taoensso/carmine  "2.2.3"]
                  [compojure             "1.1.5"]
                  [environ               "0.4.0"]
+                 [garden                "1.0.2"]
                  [hiccup                "1.0.4"]
                  [http-kit              "2.1.10"]]
 

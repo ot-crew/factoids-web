@@ -2,6 +2,7 @@
   (:use compojure.core)
   (:require [compojure.route      :as route]
             [factoids-web.config            :refer [config]]
+            [factoids-web.css     :as css]
             [factoids-web.views             :refer [render-view]]
             [taoensso.carmine     :as car   :refer (wcar)]))
 
@@ -22,7 +23,9 @@
                                      [:td.factoid (last factoid)]])
                       (sort-by first (factoids)))]]))
 
+;; Routes
 (defroutes app-routes
   (context "" {params :params :as request}
-   (GET "/"         [] "Hello World")
-   (GET "/factoids" [] (factoids-index request params))))
+   (GET "/css/styles.css" [] {:status 200 :headers {"Content-Type" "text/css; charset=utf-8"} :body css/styles})
+   (GET "/"               [] "Hello World")
+   (GET "/factoids"       [] (factoids-index request params))))
