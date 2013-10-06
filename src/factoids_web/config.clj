@@ -7,6 +7,6 @@
   ([key fallback]
      (get
        {:carmine {:pool :none
-                  :spec {:uri (env :redis-url)}}
+                  :spec {:uri (env :redis-url "redis://localhost:6379")}}
         :factoid-key "FACTOID"
         :port (env :port 9090)} key fallback)))
