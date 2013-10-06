@@ -1,10 +1,11 @@
 (ns factoids-web.routes
   (:use compojure.core)
-  (:require [compojure.route      :as route]
-            [factoids-web.config            :refer [config]]
-            [factoids-web.css     :as css]
-            [factoids-web.views             :refer [render-view]]
-            [taoensso.carmine     :as car   :refer (wcar)]))
+  (:require [compojure.route :as route]
+            [factoids-web.config :refer [config]]
+            [factoids-web.css :as css]
+            [factoids-web.views :refer [render-view]]
+            [ring.util.response :as response]
+            [taoensso.carmine :as car :refer (wcar)]))
 
 (defmacro wcar* [& body] `(car/wcar (config :carmine) ~@body))
 
@@ -27,5 +28,5 @@
 (defroutes app-routes
   (context "" {params :params :as request}
    (GET "/css/styles.css" [] {:status 200 :headers {"Content-Type" "text/css; charset=utf-8"} :body css/styles})
-   (GET "/"               [] "Hello World")
+   (GET "/"               [] (response/redirect "/factoids"))
    (GET "/factoids"       [] (factoids-index request params))))
