@@ -19,7 +19,7 @@
                   [:th "Trigger"]
                   [:th "Factoid"]]]
                 [:tbody
-                 (map (fn [factoid] [:tr
+                 (map (fn [factoid] [:tr {:id (str "factoid-" (clojure.string/replace (first factoid) #"[^\w\d_:-]" ""))}
                                      [:td.trigger (first factoid)]
                                      [:td.factoid (last factoid)]])
                       (sort-by first (factoids)))]]))
