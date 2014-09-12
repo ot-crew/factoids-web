@@ -23,5 +23,6 @@
 
              :dev {:dependencies [[ring-mock "0.1.5"]]
                    :ring {:open-browser? false
-                          :auto-refresh? true
+                          :auto-refresh? false
+                          :port          3003
                           :nrepl         {:start? true :port 7000}}}})
